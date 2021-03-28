@@ -10,17 +10,73 @@
     </head>
 <body>
     <div class="header">
-        <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
+        <h3>Video Game Sales Dashboard</h3>
+        <h5>Tracking the most popular video games throughout regions and genres</h5>
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
     <div class="row">
         <div class="col-lg-6">
             <div id="graph1"></div>
-            <div id="graph2"></div><br/>
+            <div id="graph2">
+                <div id=title>
+                    Genre Sales Break-Down in Different Regions
+                </div>
+                <div id="guide">
+                    Please click on the buttons below to select one region:
+                </div>
+                <div id="buttons">
+                    <button type="button" class="btn btn-info" onclick="setData2('the Globe', 'Global_Sales')">Global</button>
+                    <button type="button" class="btn btn-info" onclick="setData2('North America', 'NA_Sales')">NA</button>
+                    <button type="button" class="btn btn-info" onclick="setData2('Europe', 'EU_Sales')">EU</button>
+                    <button type="button" class="btn btn-info" onclick="setData2('Japan', 'JP_Sales')">JP</button>
+                    <button type="button" class="btn btn-info" onclick="setData2('Other Regions', 'Other_Sales')">Other</button>
+                </div>
+            </div><br/>
         </div>
         <div class="col-lg-6">
-            <div id="graph3"></div>
+            <div id="graph3">
+                <div id=title>
+                    Top Publishers for Games of Different Genres
+                </div>
+                <div id="guide">
+                    Please click on the buttons below to select one genre:
+                </div>
+                <div id="buttons">
+                    <button type="button" class="btn btn-info" onclick="setData3('Action')">Action</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Adventure')">Adventure</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Fighting')">Fighting</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Misc')">Misc</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Platform')">Platform</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Puzzle')">Puzzle</button>
+                    <br/>
+                    <button type="button" class="btn btn-info" onclick="setData3('Racing')">Racing</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Role-Playing')">Role-Playing</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Shooter')">Shooter</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Simulation')">Simulation</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Sports')">Sports</button>
+                    <button type="button" class="btn btn-info" onclick="setData3('Strategy')">Strategy</button>
+                </div>
+            </div>
         </div>
+    </div>
+    <div id="written_part">
+        <h3>Written Questions</h3>
+        <p>1. Graph 1 provides a lollipop graph that shows the top 10 video games of all time. By using a lollipop graph with sorted data, the ranking of the top 10 video games, as well as their relative sales as compared to each other, are clearly shown and presented. Graph 2 uses a pie chart to present the genre sales broken out per region. There are buttons for users to dynamically choose which region they want to look at. Lastly, Graph 3 provides a bar plot that shows the top 10 publishers for each genre, sorted in descending order. Hence, it could give our users a clear idea of which publisher(s) to pick based on which genre a game is. Again, users can click on different buttons to dynamically choose which genre they want to focus on.</p>
+        <p>2. D3 was helpful and improved my visualization:
+            <li>D3 provides a wide variety of graphs to visualize different types of data and achieve different purposes</li>
+            <li>D3 is built with JavaScript, so the visualization can work nicely with HTML/CSS, and it can also be easily hosted on websites</li>
+            <li>D3 also provides nice animations, which allows smooth transition for dynamic visualization of data, and great user interactivity</li>
+        </p>
+        <p>3. D3 would not be the best tool for creating a visualization:
+            <li>D3 is quite hard to code, and it has a steep initial learning curve, so that it might not be the best tool for people who specialize in dealing with data but have no experience with coding / web development </li>
+            <li>Insufficient documentation and resources that could be found online for coding assistance; not much tutorial for beginners</li>
+            <li>Little space for customization, and there is only a fixed set of graph types that users can choose from; it would be great if more innovative visualization graph types could be added</li>
+            <li>Could potentially be slow if procesesing huge datasets</li>
+        </p>
+        <p>4. My dashboard might not be very accessible or friendly for users with different degrees of visual impairments as described in the article "A Comprehensive Guide to Accessible Data Visualization". For example, for those who has low vision or blindness and rely on assistive technology (e.g. screen reader) to navigate through websites, my dashboard might not be accessible at all because there are not many texts on the web page for the interpretation of the graphs so that there is nothing for the screen reader to read out loud. In order to accommodate for this group of users, I should consider customizing an audio message to describe and summarize each of my graphs, or, as proposed in the article, adding a textual interpretation/analysis accompanying each graph which could be discovered by the assistive technology of visually impaired users. Moreover, as mentioned in the article, hover overlays (the tooltip in Graph 2) might be difficult or impossible to read for assistive technology. We could consider showing the output at all times rather than implementing a tooltip. Another type of visual impairment that we need to take into account for is color blindness. Since the interpretation of Graph 2 on my dashboard largely relies on the ability of users to differentiate between colors, even though we added tooltip features to help identify the genre of each section on the pie chart, Graph 2 might still not be very friendly to color-blind users. We could consider adding more obvious textual description of each section on the pie chart that is shown at all times. </p>
+        <p>5. I could have added a textual summary to each of my graphs, describing some insights and key findings, to make the graphs more accessible to visually impaired users relying on assistive technology. However, one of the reasons that kept me from doing that is that for most users, the graphs themselves are self-explanatory, and adding a summary for each graph seems a bit extra and can be distracting for some users. Moreover, another step I could have taken to make my dashboard more accessible is to have a clean labeling of groups for the pie chart that is shown at all times rather than implementing a tooltip which requires users to hover over certain sections of the graph. However, I didn't choose to implement that because first, implementing a tooltip is a requirement for this assignment. Second, the tooltip feature provides users with some interactivity and allows users to choose when to look at certain information. Again, presenting unnecessary information at all times could potentially be distracting for some users.</p>
+        <h3>Extra Credit</h3>
+        <p>Implementation of dynamic stats calculation: in graph 2, when users hover over one of the categories (genres) on the pie chart, the percentage of the sales of that genre out of the total sales is dynamically calculated and shown in the tooltip box. It is statistical because, in addition to the absolute sales value, the percentile gives our users a clearer sense of how much weight a certain genre has, relative to other genres, in a certain regional market.</p>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
     <script type="text/javascript" src="main.js"></script>
